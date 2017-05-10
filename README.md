@@ -1,4 +1,4 @@
-# fe-utils v1.0.0
+# fe-utils v1.0.2
   collect all kinds of utility functions that are often used by us.
 
 ## Installation
@@ -25,7 +25,8 @@ var cookie = require('fe-utils/cookie')
 
 #### allMethods:
 1. NumberToChinese
-  NumberToChinese(12345) // 一万二千三百四十五
+  * NumberToChinese(12345) // '一万二千三百四十五'
+  * NumberToChinese(12345, true) // '壹万贰仟叁佰肆十伍'
 2. cookie
   * setCookie(name, domain, domain, expiredays)
   * getCookie(name)

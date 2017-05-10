@@ -1,0 +1,34 @@
+{
+  "name": "fe-utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "fe-utils.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node build.js",
+    "dev": "rollup -c -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lzwaiwai/fe-utils.git"
+  },
+  "keywords": [
+    "fe",
+    "utils"
+  ],
+  "author": "lzwai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lzwaiwai/fe-utils/issues"
+  },
+  "homepage": "https://github.com/lzwaiwai/fe-utils#readme",
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-latest": "^6.24.1",
+    "rollup": "^0.41.6",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-node-resolve": "^3.0.0"
+  }
+}

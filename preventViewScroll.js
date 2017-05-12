@@ -28,6 +28,10 @@ var preventViewScroll = function preventViewScroll(classes) {
   });
 
   document.body.addEventListener('touchmove', function (e) {
+    var target = e.target || e.currentTarget;
+    if (target.className.indexOf('prevent-view-scroll') !== -1) {
+      return;
+    }
     e._isScroller || e.preventDefault();
   });
 };

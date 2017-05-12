@@ -28,6 +28,10 @@ const preventViewScroll = (classes) => {
   })
 
   document.body.addEventListener('touchmove', function (e) {
+    const target = e.target || e.currentTarget
+    if (target.className.indexOf('prevent-view-scroll') !== -1) {
+      return
+    }
     e._isScroller || e.preventDefault()
   })
 }

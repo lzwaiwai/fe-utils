@@ -151,6 +151,22 @@ var detectedInfos = {
   isPC: !isMobile && !isIOS && !isAndroid && !isWindowPhone
 };
 
+var getVersionOfIOS = function getVersionOfIOS() {
+  var agent = window.navigator.userAgent.toLowerCase();
+
+  if (/ipad|iphone|ipod/.test(agent)) {
+    // 优雅降级
+    if (agent.indexOf('like mac os x') > 0) {
+      // ios
+      var regStr = /os [\d._]*/gi;
+      var verinfo = agent.match(regStr);
+      return verinfo.toString().replace(/[^0-9|_.]/ig, '').replace(/_/ig, '.');
+    }
+  }
+
+  return null;
+};
+
 var chnNumChar = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
 var chTwNumChar = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖', '拾'];
 var chnUnitSection = ['', '万', '亿', '万亿', '亿亿'];
@@ -250,6 +266,10 @@ var preventViewScroll = function preventViewScroll(classes) {
   });
 
   document.body.addEventListener('touchmove', function (e) {
+    var target = e.target || e.currentTarget;
+    if (target.className.indexOf('prevent-view-scroll') !== -1) {
+      return;
+    }
     e._isScroller || e.preventDefault();
   });
 };
@@ -260,6 +280,7 @@ var main = {
   toRoman: toRoman,
   urlQuery: urlQuery,
   detectedInfos: detectedInfos,
+  getVersionOfIOS: getVersionOfIOS,
   NumberToChinese: NumberToChinese,
   preventViewScroll: preventViewScroll
 };

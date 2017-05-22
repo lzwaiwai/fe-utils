@@ -16,11 +16,10 @@ $ npm i --save fe-utils
 
 #### Usage:
 ```js
-// Load the full build.
-var feUtils = require('fe-utils') // not recommend
-
 // Load method categories.
 var cookie = require('fe-utils/cookie')
+var date = require('fe-utils/date')
+...
 ```
 
 #### allMethods:
@@ -32,7 +31,7 @@ var cookie = require('fe-utils/cookie')
     * ```getCookie(name)```
     * ```delCookie(name, domain)```
 3. **date**
-    * ```dateFormat() // dateFormat(new Date(), 'MM月dd日 hh:mm:ss')```
+    * ```dateFormat() // dateFormat(new Date(), 'YYYY年MM月DD日 hh:mm:ss')```
 4. **detectedInfos**
     * isAndroid / isIOS / isWindowPhone / isWX / isWeibo / isMobile / isPC
 5. **preventViewScroll**

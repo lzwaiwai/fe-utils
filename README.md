@@ -1,4 +1,4 @@
-# fe-utils v1.0.4
+# fe-utils
   collect all kinds of utility functions that are often used by us.
 
 ## Installation
@@ -42,6 +42,8 @@ var date = require('fe-utils/date')
 7. **toRoman**
     * ```toRoman(25) // 'XXV'```
 8. **getVersionOfIOS**
-     * ```getVersionOfIOS() // '10.3'```
+    * ```getVersionOfIOS() // '10.3'```
+9. **relProtocol**
+    * ```relProtocol('http://xxx.com') // '//xxx.com'```
 9. **logger**
      *  <img src="http://o4a7cbihz.qnssl.com/cover/4ec91a4e-e638-4753-9f6a-9cee4e715420" width = "250"  align="center" />

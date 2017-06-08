@@ -164,6 +164,45 @@ var urlQuery = {
   }
 };
 
+var mediaError = function mediaError(media, callback) {
+  var err = media.error;
+  var message = err.message;
+  var nodeName = media.nodeName.toLowerCase();
+
+  var errMsg = '';
+
+  try {
+    switch (err.code) {
+      case MediaError.MEDIA_ERR_ABORTED:
+        errMsg += 'The user canceled the ' + nodeName + '. ';
+        break;
+      case MediaError.MEDIA_ERR_NETWORK:
+        errMsg += 'A network error occurred while fetching the ' + nodeName + '. ';
+        break;
+      case MediaError.MEDIA_ERR_DECODE:
+        errMsg += 'An error occurred while decoding the ' + nodeName + '. ';
+        break;
+      case MediaError.MEDIA_ERR_SRC_NOT_SUPPORTED:
+        errMsg += 'The ' + nodeName + ' is missing or is in a format not supported by your browser. ';
+        break;
+      default:
+        errMsg += 'An unknown error occurred. ';
+        break;
+    }
+  } catch (err) {
+    console && console.log(err);
+  }
+
+  if (message && message.length) {
+    errMsg += message;
+  }
+
+  callback && callback({
+    code: err.code,
+    msg: errMsg
+  });
+};
+
 var mobileCheck = function mobileCheck() {
   var check = false;
   (function (a) {
@@ -315,6 +354,7 @@ var main = {
   cookie: cookie,
   toRoman: toRoman,
   urlQuery: urlQuery,
+  mediaError: mediaError,
   detectedInfos: detectedInfos,
   getVersionOfIOS: getVersionOfIOS,
   NumberToChinese: NumberToChinese,

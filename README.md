@@ -46,4 +46,6 @@ var date = require('fe-utils/date')
 9. **relProtocol**
     * ```relProtocol('http://xxx.com') // '//xxx.com'```
 9. **logger**
-     *  <img src="http://o4a7cbihz.qnssl.com/cover/4ec91a4e-e638-4753-9f6a-9cee4e715420" width = "250"  align="center" />
+    * <img src="http://o4a7cbihz.qnssl.com/cover/4ec91a4e-e638-4753-9f6a-9cee4e715420" width = "250"  align="center" />
+10. **mediaError**
+    * ```mediaError(video / audio, (code, msg) => { ... })  // for error-listener-callback of audio and video ```

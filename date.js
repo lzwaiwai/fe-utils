@@ -2,15 +2,17 @@ var date = {
   dateFormat: function dateFormat(d, fmt) {
     // format(new Date(), 'YYYY年MM月DD日 hh:mm:ss')
     if (!d || !fmt) {
-      throw new Error('lack date or format');
+      throw new Error('lack date or format')
     }
+
     if (typeof d === 'string') {
       // 判断时区是UTC标准时区，转成东八区时间
       if (d.indexOf('Z') > -1) {
         d = new Date(d).getTime() - (8 * 60 * 60 * 1000)
       }
-      d = new Date(d);
     }
+    // 转换毫秒和字符串为时间对象
+    d = new Date(d)
     var o = {
       'M+': d.getMonth() + 1, // 月份
       'D+': d.getDate(), // 日

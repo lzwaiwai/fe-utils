@@ -2,11 +2,15 @@ var date = {
   dateFormat: function dateFormat(d, fmt) {
     // format(new Date(), 'YYYY年MM月DD日 hh:mm:ss')
     if (!d || !fmt) {
-      throw new Error('lack date or format');
+      throw new Error('lack date or format')
     }
-    if (typeof d === 'string') {
-      d = new Date(d);
+    // 转换毫秒和字符串为时间对象
+    if (typeof d === 'string' || typeof d === 'number') {
+      d = new Date(d)
     }
+    // d是NaN的时候返回空
+    if (isNaN(d)) return ''
+
     var o = {
       'M+': d.getMonth() + 1, // 月份
       'D+': d.getDate(), // 日

@@ -34,6 +34,11 @@ var urlQuery = {
       i++;
     }
     return result;
+  },
+  queryRouterLastOne: function () {
+    let str = loc.pathname.split('/')
+    str = str[str.length - 1].split('?')[0]
+    return str
   }
 };
 

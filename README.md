@@ -49,3 +49,8 @@ var date = require('fe-utils/date')
     * <img src="http://o4a7cbihz.qnssl.com/cover/4ec91a4e-e638-4753-9f6a-9cee4e715420" width = "250"  align="center" />
 10. **mediaError**
     * ```mediaError(video / audio, (code, msg) => { ... })  // for error-listener-callback of audio and video ```
+11. **loadJs**
+     * ```loadJs(url, callback)```
+
+----
+### Thank to [A-Dan](https://github.com/oneMoreTime1357), [shaoyishou](https://github.com/shaoyishou), [Div](https://github.com/div-wang)

@@ -32,12 +32,8 @@ var urlQuery = {
     return url.indexOf('?') !== -1 ? url.replace(/\?([^#]*)/, '' + (search ? '?' + search : '')) : '' + url + (search ? '?' + search : '');
   },
   _getQueryFromUrl: function _getQueryFromUrl(url) {
-    if (!url) {
+    if (!url || url.indexOf('?') === -1) {
       return '';
-    }
-
-    if (url.indexOf('?') === -1) {
-      return url;
     }
 
     var search = url.split('?')[1];

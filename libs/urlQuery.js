@@ -31,12 +31,8 @@ const urlQuery = {
   },
 
   _getQueryFromUrl (url) {
-    if (!url) {
+    if (!url || url.indexOf('?') === -1) {
       return ''
-    }
-
-    if (url.indexOf('?') === -1) {
-      return url
     }
 
     const search = url.split('?')[1]

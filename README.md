@@ -65,7 +65,7 @@ var date = require('fe-utils/date')
                     group: 'voice',
                     referer: 'list'
                 },
-                search: 'http://live.tinfinite.com:8080/path/chat-studio.html?liveshowId=592e4e2bf84e6e26c1cf97dd&group=voice&referer=list#123'
+                url: 'http://live.tinfinite.com:8080/path/chat-studio.html?liveshowId=592e4e2bf84e6e26c1cf97dd&group=voice&referer=list#123'
             }
     del
         // del('liveshowId', url) ->
@@ -73,7 +73,7 @@ var date = require('fe-utils/date')
                 query: {
                     group: 'live'
                 },
-                search: 'http://live.tinfinite.com:8080/path/chat-studio.html?group=live#123'
+                url: 'http://live.tinfinite.com:8080/path/chat-studio.html?group=live#123'
             }
 
         // del(['liveshowId', 'group'], url) ->

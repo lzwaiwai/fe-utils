@@ -191,7 +191,7 @@ var urlQuery = {
 
     return {
       querys: query,
-      search: str ? this._makeUrl(str, search) : '?' + search
+      url: str ? this._makeUrl(str, search) : '?' + search
     };
   },
   del: function del(keys) {
@@ -227,7 +227,7 @@ var urlQuery = {
 
     return {
       querys: newQuery,
-      search: str ? this._makeUrl(str, search) : '?' + search
+      url: str ? this._makeUrl(str, search) : '?' + search
     };
   }
 };

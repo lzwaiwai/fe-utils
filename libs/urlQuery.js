@@ -62,7 +62,7 @@ const urlQuery = {
 
     return {
       querys: query,
-      search: str ? this._makeUrl(str, search) : `?${search}`
+      url: str ? this._makeUrl(str, search) : `?${search}`
     }
   },
 
@@ -97,7 +97,7 @@ const urlQuery = {
 
     return {
       querys: newQuery,
-      search: str ? this._makeUrl(str, search) : `?${search}`
+      url: str ? this._makeUrl(str, search) : `?${search}`
     }
   }
 }

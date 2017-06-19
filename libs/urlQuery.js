@@ -1,39 +1,104 @@
-let loc = window.location
+const loc = window.location
 
-let urlQuery = {
-  queryOne: function (name, str) {
-    let s = ''
-    if (str) {
-      s = str
-    } else {
-      s = loc.search
-    }
-    let reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)') // 构造一个含有目标参数的正则表达式对象
-    let r = s.substr(1).match(reg)  // 匹配目标参数
+const urlQuery = {
+  queryOne (key, str = '') {
+    const s = str ? `?${this._getQueryFromUrl(str)}` : loc.search
+    const reg = new RegExp('(^|&)' + key + '=([^&]*)(&|$)') // 构造一个含有目标参数的正则表达式对象
+    const r = s.substr(1).match(reg)  // 匹配目标参数
     if (r != null) {
-      return decodeURIComponent(r[2])
+      return decodeURIComponent(r[2]).replace(/(#\w+)$/, '')
     }
     return null // 返回参数值
   },
 
-  queryAll: function (str) {
-    let s = ''
-    if (str) {
-      s = str
-    } else {
-      s = loc.search
-    }
-    let search = s.substr(1)
-    let a = search.split('&')
+  queryAll (str = '') {
+    const s = str ? `?${this._getQueryFromUrl(str)}` : loc.search
+    const search = s.substr(1)
+    const a = search.split('&')
     let i = 0
     let result = {}
 
     while (a[i]) {
-      let kv = a[i].split('=')
+      let kv = a[i].replace(/(#\w+)$/, '').split('=')
       result[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1])
       i++
     }
     return result
+  },
+
+  _makeUrl (url, search) {
+    return url.indexOf('?') !== -1 ? url.replace(/\?([^#]*)/, `${search ? '?' + search : ''}`) : `${url}${search ? '?' + search : ''}`
+  },
+
+  _getQueryFromUrl (url) {
+    if (!url) {
+      return ''
+    }
+
+    if (url.indexOf('?') === -1) {
+      return url
+    }
+
+    const search = url.split('?')[1]
+
+    if (!search || search.indexOf('=') === -1) {
+      throw new Error('not query format!')
+    }
+
+    return search
+  },
+
+  update (obj, str = '') {
+    let query = this.queryAll(str)
+    let result = []
+
+    Object.assign(query, obj)
+
+    for (let key in query) {
+      result.push(`${key}=${query[key]}`)
+    }
+
+    const search = result.join('&')
+
+    return {
+      querys: query,
+      search: str ? this._makeUrl(str, search) : `?${search}`
+    }
+  },
+
+  del (keys, str = '') {
+    if (!keys) {
+      return
+    }
+
+    if (typeof keys === 'string') {
+      keys = [keys]
+    }
+
+    const query = this.queryAll(str)
+    let keysObj = {}
+    let result = []
+    let newQuery = {}
+
+    keys.forEach((item) => {
+      keysObj[item] = true
+    })
+
+    for (let key in query) {
+      let item = query[key]
+
+      if (!keysObj[key]) {
+        newQuery[key] = item
+        result.push(`${key}=${item}`)
+      }
+    }
+
+    const search = result.join('&')
+
+    return {
+      querys: newQuery,
+      search: str ? this._makeUrl(str, search) : `?${search}`
+    }
   }
 }
 

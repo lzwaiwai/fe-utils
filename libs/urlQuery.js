@@ -48,7 +48,9 @@ const urlQuery = {
     let query = this.queryAll(str)
     let result = []
 
-    Object.assign(query, obj)
+    for (let name in obj) {
+      query[name] = obj[name]
+    }
 
     for (let key in query) {
       result.push(`${key}=${query[key]}`)

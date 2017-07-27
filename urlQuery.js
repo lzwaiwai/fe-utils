@@ -50,7 +50,9 @@ var urlQuery = {
     var query = this.queryAll(str);
     var result = [];
 
-    Object.assign(query, obj);
+    for (var name in obj) {
+      query[name] = obj[name];
+    }
 
     for (var key in query) {
       result.push(key + '=' + query[key]);

@@ -142,6 +142,7 @@ var urlQuery = {
   queryAll: function queryAll() {
     var str = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 
+    var reg = new RegExp('(^|&)([^&=]+)=([^&]*)(&|$)');
     var s = str ? '?' + this._getQueryFromUrl(str) : loc.search;
     var search = s.substr(1);
     var a = search.split('&');
@@ -149,8 +150,10 @@ var urlQuery = {
     var result = {};
 
     while (a[i]) {
-      var kv = a[i].replace(/(#\w+)$/, '').split('=');
-      result[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1]);
+      var r = a[i].match(reg);
+      if (r != null) {
+        result[decodeURIComponent(r[2])] = decodeURIComponent(r[3]);
+      }
       i++;
     }
     return result;

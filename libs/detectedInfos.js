@@ -15,6 +15,7 @@ const detectedInfos = {
   isWindowPhone: /windows phone/i.test(ua),
   isWX: /micromessenger/.test(ua.toLowerCase()),
   isWeibo: /weibo/.test(navigator.userAgent.toLowerCase()),
+  isSafari: /^((?!chrome|android).)*safari/i.test(ua),
   isMobile,
   isPC: !isMobile && !isIOS && !isAndroid && !isWindowPhone
 }

@@ -20,7 +20,7 @@ const preventViewScroll = (classes: string | string[]): void => {
     classes = [classes]
   }
 
-  classes.forEach((item: string) => {
+  classes.forEach((item: string): void => {
     if (item) {
       const dom: HTMLElement | null = document.querySelector(item)
       dom && prevent(dom)

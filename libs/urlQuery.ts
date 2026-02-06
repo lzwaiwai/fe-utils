@@ -95,7 +95,7 @@ const urlQuery: UrlQuery = {
     const result: string[] = []
     const newQuery: { [key: string]: string } = {}
 
-    keys.forEach((item: string) => {
+    keys.forEach((item: string): void => {
       keysObj[item] = true
     })
 

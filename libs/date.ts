@@ -7,7 +7,7 @@ const date: DateUtil = {
     if (!d || !fmt) {
       throw new Error('lack date or format')
     }
-    if (typeof d === 'string') {
+    if (typeof(d) === 'string') {
       d = new Date(d)
     }
     const o: { [key: string]: number } = {

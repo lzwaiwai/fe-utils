@@ -8,7 +8,7 @@ const mediaError = (media: HTMLMediaElement, callback?: (result: MediaErrorResul
   if (!err) {
     return
   }
-
+  
   const message: string = err.message
   const nodeName: string = media.nodeName.toLowerCase()
 

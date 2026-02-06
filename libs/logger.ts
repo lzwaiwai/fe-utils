@@ -27,19 +27,19 @@ const logger: Logger = {
   },
 
   success(...params: any[]): void {
-    console && console.log(`%c${params.join(' ')}`, `color: ${colors.success};`)
+    console && console.log(`%c${params.join(' ')}`, `color: ${ colors.success };`)
   },
 
   info(...params: any[]): void {
-    console && console.log(`%c${params.join(' ')}`, `color: ${colors.info};`)
+    console && console.log(`%c${params.join(' ')}`, `color: ${ colors.info };`)
   },
 
   warn(...params: any[]): void {
-    console && console.log(`%c${params.join(' ')}`, `color: ${colors.warn};`)
+    console && console.log(`%c${params.join(' ')}`, `color: ${ colors.warn };`)
   },
 
   error(...params: any[]): void {
-    console && console.log(`%c${params.join(' ')}`, `color: ${colors.error};`)
+    console && console.log(`%c${params.join(' ')}`, `color: ${ colors.error };`)
   },
 
   group(groupTip: string, logs: () => void, notCollapsed?: boolean): void {

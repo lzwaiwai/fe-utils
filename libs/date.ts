@@ -1,0 +1,64 @@
+interface DateUtil {
+  dateFormat(d: Date | string, fmt: string): string
+}
+
+const date: DateUtil = {
+  dateFormat(d: Date | string, fmt: string): string { // format(new Date(), 'YYYY年MM月DD日 hh:mm:ss')
+    if (!d || !fmt) {
+      throw new Error('lack date or format')
+    }
+    if (typeof d === 'string') {
+      d = new Date(d)
+    }
+    const o: { [key: string]: number } = {
+      'M+': d.getMonth() + 1, // 月份
+      'D+': d.getDate(), // 日
+      'h+': d.getHours(), // 小时
+      'm+': d.getMinutes(), // 分
+      's+': d.getSeconds(), // 秒
+      'Q+': Math.floor((d.getMonth() + 3) / 3), // 季度
+      'S': d.getMilliseconds() // 毫秒
+    }
+
+    if (/(Y+)/.test(fmt)) {
+      fmt = fmt.replace(RegExp.$1, (d.getFullYear() + '').substr(4 - RegExp.$1.length))
+    }
+
+    for (const k in o) {
+      if (new RegExp('(' + k + ')').test(fmt)) {
+        fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k].toString()) : (('00' + o[k]).substr(('' + o[k]).length)))
+      }
+    }
+
+    return fmt
+  }
+  // TodayFormat (date) {
+  //   if (!date) {
+  //     throw new Error('lack date')
+  //   }
+
+  //   const fmt = 'YYYY-MM-DD'
+  //   const cur = new Date() // 当前年月日
+  //   const curYear = cur.getFullYear()
+  //   const curMonth = cur.getMonth() + 1
+  //   const curDay = cur.getDate()
+
+  //   const next = new Date(`${curYear}/${curMonth}/${curDay + 1}`) // 明天年月日
+  //   const param = new Date(date) // 传进来的年月日
+  //   const paramDay = new Date().getDate()
+
+  //   const nowDate = this.dateFormat(cur, fmt)
+  //   const nextDate = this.dateFormat(next, fmt)
+  //   const paramDate = this.dateFormat(param, fmt)
+
+  //   if (nowDate == nextDate) {
+  //     return '今天' + this.dateFormat(paramDate, 'hh:mm')
+  //   } else if (paramDay === curDay) {
+  //     return '明天' + this.dateFormat(paramDate, 'hh:mm')
+  //   } else {
+  //     return this.dateFormat(paramDate, 'MM月DD日 hh:mm')
+  //   }
+  // }
+}
+
+export default date

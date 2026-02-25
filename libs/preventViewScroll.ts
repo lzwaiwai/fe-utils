@@ -12,7 +12,7 @@ const preventViewScroll = (classes: string | string[]): void => {
     })
 
     ele.addEventListener('touchmove', function (e: any): void {
-      ele.offsetHeight < ele.scrollHeight && (e._isScroller = true)
+      ele.offsetHeight < ele.scrollHeight && (e._isScroller = !0)
     })
   }
 
@@ -20,7 +20,7 @@ const preventViewScroll = (classes: string | string[]): void => {
     classes = [classes]
   }
 
-  classes.forEach((item: string): void => {
+  classes.forEach((item: string) => {
     if (item) {
       const dom: HTMLElement | null = document.querySelector(item)
       dom && prevent(dom)

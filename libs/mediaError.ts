@@ -1,9 +1,9 @@
-interface MediaErrorResult {
+interface MediaErrorInfo {
   code: number
   msg: string
 }
 
-const mediaError = (media: HTMLMediaElement, callback?: (result: MediaErrorResult) => void): void => {
+const mediaError = (media: HTMLMediaElement, callback?: (error: MediaErrorInfo) => void): void => {
   const err: MediaError | null = media.error
   if (!err) {
     return

@@ -10,7 +10,7 @@ interface UrlQuery {
   queryAll(str?: string): { [key: string]: string }
   _makeUrl(url: string, search: string): string
   _getQueryFromUrl(url: string): string
-  update(obj: { [key: string]: string }, str?: string): QueryResult
+  update(obj: { [key: string]: any }, str?: string): QueryResult
   del(keys: string | string[], str?: string): QueryResult | undefined
 }
 
@@ -61,7 +61,7 @@ const urlQuery: UrlQuery = {
     return search
   },
 
-  update(obj: { [key: string]: string }, str: string = ''): QueryResult {
+  update(obj: { [key: string]: any }, str: string = ''): QueryResult {
     const query: { [key: string]: string } = this.queryAll(str)
     const result: string[] = []
 
@@ -95,7 +95,7 @@ const urlQuery: UrlQuery = {
     const result: string[] = []
     const newQuery: { [key: string]: string } = {}
 
-    keys.forEach((item: string): void => {
+    keys.forEach((item: string) => {
       keysObj[item] = true
     })
 

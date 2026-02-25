@@ -11,7 +11,7 @@ const cookie: Cookie = {
   setCookie(name: string, value: string, domain: string, expiredays?: number): void {
     const exdate: Date = new Date()
     exdate.setDate(exdate.getDate() + (expiredays || 0))
-    const expires: string = expiredays == null ? '' : `;expires=${exdate.toUTCString()}`
+    const expires: string = expiredays == null ? '' : `;expires=${exdate.toGMTString()}`
     doc.cookie = `${name}=${escape(value)}${expires};path=/;domain=.${domain}`
   },
 
@@ -32,7 +32,7 @@ const cookie: Cookie = {
     const cval: string = ' ' // this.getCookie(name)
 
     exp.setTime(exp.getTime() - 100)
-    doc.cookie = `${name}=${cval};expires=${exp.toUTCString()};path=/;domain=.${domain}`
+    doc.cookie = `${name}=${cval};expires=${exp.toGMTString()};path=/;domain=.${domain}`
   }
 }
 
